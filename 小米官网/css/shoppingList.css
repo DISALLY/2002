@@ -1,0 +1,137 @@
+body{
+    margin: 0 auto;
+    padding: 140px 70px;
+  }
+   .goodsCon {
+     width: 300px;
+     height: 400px;
+     background-color: white;
+     float: left;
+     margin-left: 30px;
+     margin-bottom: 10px;
+     position: relative;
+   }
+   .icon {
+     width: 200px;
+     height: 200px;
+     margin: auto;
+     position: absolute;
+     left: 0;
+     right: 0;
+     top: 30px;
+     transition: all 0.3s;
+   }
+   .icon:hover {
+     top: 20px;
+   }
+   .title {
+     color: #333;
+     font-size: 14px;
+     margin: 20px -10px 9px;
+     font-weight: 400;
+     text-align: center;
+     line-height: 20px;
+     height: 20px;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     overflow: hidden;
+     position: absolute;
+     left: 30px;
+     top: 230px;
+     width: 240px;
+   }
+   .info {
+     position: absolute;
+     top: 275px;
+     left: 20px;
+     color: #b0b0b0;
+     font-size: 14px;
+     text-align: center;
+   }
+   .info > img {
+     width: 40px;
+     height: 19px;
+     vertical-align: middle;
+     margin-right: 10px;
+   }
+   .priceCon {
+     width: 290px;
+     height: 100px;
+     position: absolute;
+     border-top: 1px solid #eeeeee;
+     top: 300px;
+   }
+   .history {
+     position: absolute;
+     left: 20px;
+     top: 6px;
+     padding: 0 8px;
+     height: 16px;
+     line-height: 16px;
+     background-color: #e6e6e6;
+     font-size: 10px;
+     color: #999;
+     -moz-border-radius: 2px;
+     border-radius: 2px;
+   }
+   .price {
+     font-size: 24px;
+     color:#ff6700;
+     display: inline-block;
+     margin-top: 25px;
+     margin-left: 20px;
+   }
+   /* .price::first-letter {
+     font-size: 14px;
+   } */
+   .oldPrice {
+     font-size: 12px;
+     color: #999999;
+     text-decoration: line-through;
+     display: inline-block;
+     margin-left: 6px;
+    
+   }
+   .soldText {
+     margin-left: 20px;
+     font-size: 12px;
+     color: #666666;
+   }
+   .soldSpan {
+     width: 88px;
+     height: 8px;
+     display: inline-block;
+     background-color: #e6e6e6;
+     margin-left: 10px;
+     border-radius: 4px;
+   }
+   .soldSpan > span {
+     display: block;
+     background-color:#ff6700;
+     height: 8px;
+     border-radius: 4px;
+   }
+   .button {
+     top: 0;
+     right: 0;
+     bottom: 0;
+     margin: auto 0;
+     width: 80px;
+        height: 40px;
+       color: white;
+       position: absolute;
+       border: 1px solid #ff6700;
+       transition: all .4s;
+       position: absolute;
+       background:#ff6700;
+       text-align: center;
+        line-height: 40px;
+     font-size: 14px;
+     outline: none;
+     }
+     .button:hover{
+         background:  #b0b0b0;
+         border: 1px solid #b0b0b0;
+     }
+ 
+ 

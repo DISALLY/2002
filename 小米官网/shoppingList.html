@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品详情</title>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+  </head>
+  <link rel="stylesheet" href="./css/shoppingList.css" />
+  <body>
+    <script type="module">
+        import Utils from "./js/Utils.js";
+        $.getJSON("./json/shoppingList.json",function(data){
+              var goodsList =[];
+            
+              $.each(data,function(prop,item){
+                goodsList.push(item)
+              });
+        init();
+        function init() {
+          for (var i = 0; i < goodsList.length; i++) {
+            createGoods(goodsList[i]);
+          }
+        }
+
+        function createGoods(data) {
+          var div = Utils.ce("div");
+          div.className = "goodsCon";
+          var a=Utils.ce("a");
+          a.href=data.href;
+          a.target="_blank";
+          div.appendChild(a);
+          createIcon(a, data.icon);
+          createTitle(a, data.title);
+          createInfo(a, data.info, data.selfSell);
+          createPriceCon(div, data);
+          document.body.appendChild(div);
+        }
+
+        function createIcon(parent, iconPath) {
+          var img = new Image();
+          img.src = iconPath;
+          img.className = "icon";
+          parent.appendChild(img);
+        }
+
+        function createTitle(parent, title) {
+          var h4 = Utils.ce("h4");
+          h4.className = "title";
+          h4.textContent = title;
+          parent.appendChild(h4);
+        }
+
+        function createInfo(parent, info, selfSell) {
+          var div = Utils.ce("div");
+          var text = document.createTextNode(info);
+          div.appendChild(text);
+          div.className = "info";
+          parent.appendChild(div);
+        }
+
+        function createPriceCon(parent, data) {
+          var div = Utils.ce("div");
+          div.className = "priceCon";
+          createHistory(div, data.history);
+          createPrice(div, data.price, data.oldPrice);
+          createsold(div, data.sold);
+          createButton(div, data.id);
+          parent.appendChild(div);
+        }
+
+        function createHistory(parent, history) {
+            if(history.trim().length===0)  return;
+          var div = Utils.ce("div");
+          div.textContent = history;
+          div.className = "history";
+          parent.appendChild(div);
+        }
+        function createPrice(parent, price, oldPrice) {
+          var priceDiv = Utils.ce("span");
+          priceDiv.textContent =  price;
+          priceDiv.className = "price";
+          var oldPriceDiv = Utils.ce("span");
+          oldPriceDiv.textContent = oldPrice;
+          oldPriceDiv.className = "oldPrice";
+          parent.appendChild(priceDiv);
+          parent.appendChild(oldPriceDiv);
+        }
+
+        function createsold(parent, sold) {
+          var div = Utils.ce("div");
+          var soldText = Utils.ce("span");
+          soldText.textContent = `已售${sold * 100}%`;
+          soldText.className = "soldText";
+          div.appendChild(soldText);
+          var soldSpan = Utils.ce("span");
+          var soldRed = Utils.ce("span");
+          soldSpan.className = "soldSpan";
+          soldRed.style.width = 88 * sold + "px";
+          soldSpan.appendChild(soldRed);
+          div.appendChild(soldSpan);
+          parent.appendChild(div);
+        }
+        function createButton(parent,id) {
+          var a = Utils.ce("button");
+          a.textContent = "加入购物车"+"="+id;
+          a.className = "button";
+          parent.appendChild(a);
+          a.addEventListener("click", clickHandler);
+             localStorage.shappingList=JSON.stringify([]);
+             
+            a.addEventListener("click",clickHandler);
+ 
+             function clickHandler(e){
+               
+                 var obj=goodsList[id-1];
+                // console.log(obj)
+                   arr;
+                 if(localStorage.shoppingList){  
+                     var  arr=JSON.parse(localStorage.shoppingList);
+                  }else{
+                     arr=[]
+                  }  
+                 //var arr=JSON.parse(localStorage.shoppingList);
+                arr.push(obj);
+                console.log(arr)
+                localStorage.shoppingList=JSON.stringify(arr);
+                alert('成功添加进购物车');
+                location.href="./car.html"
+                    
+                // location.href="./car.html"
+             }
+
+                
+        }
+
+
+
+
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./img/logo.jpg" type="image/x-icon" />
+    <title>商品详情</title>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+  </head>
+  <style>
+    h4 {
+      font-size: 30px;
+      font-weight: 400;
+    }
+    font,
+    span {
+      font-size: 14px;
+      line-height: 30px;
+      text-align: left;
+    }
+    p {
+      font-weight: 700;
+      font-size: 35px;
+    }
+    .right-h3 {
+      font-weight: 400;
+      font-size: 18px;
+    }
+    .fang {
+      z-index: 999;
+    }
+    .buy {
+      display: block;
+      width: 280px;
+      height: 52px;
+      line-height: 52px;
+      font-size: 16px;
+      background-color: #f25807;
+      text-decoration: none;
+      text-align: center;
+      color: white;
+      position: absolute;
+      top: 470px;
+      right: 340px;
+    }
+    .car {
+      color: white;
+      position: absolute;
+      background: #b0b0b0;
+      border: 1px solid #b0b0b0;
+      transition: all .4s;
+      text-decoration: none;
+      text-align: center;
+       line-height: 52px;
+       outline: none;
+    }
+    .car:hover{
+        background: #757575;
+    }
+  </style>
+  <body>
+    <a class="buy" href="#">立即购买</a>
+    
+
+    <script type="module">
+      import Utils from "./js/Utils.js";
+      $.getJSON("./json/shoppingList.json", function (data) {
+        var goodsList = [];
+        $.each(data, function (prop, item) {
+          goodsList.push(item);
+        });
+
+        // 数据驱动显示
+        var max, min, mask, imgCon, preImg, preli;
+        var x = 0,
+          y = 0,
+          pos = 0,
+          ullist = [],
+          //
+          id = window.location.search.substr(1).split("=")[1],
+          src = "./img/00" + id + ".webp",
+          src1 = "./img/" + id + ".1.jpg",
+          src2 = "./img/" + id + ".2.jpg",
+          src3 = "./img/" + id + ".3.jpg",
+          src4 = "./img/" + id + ".4.jpg",
+          src5 = "./img/" + id + ".5.jpg",
+          //
+          iconList = [src, src2, src3, src4, src5, src1, src2],
+          baclist = [src],
+          infom = goodsList[id - 1],
+          bnList = [];
+
+        console.log(infom);
+        const MASK_WIDTH = 303.75;
+        const MIN_WIDTH = 450;
+        const MAX_WIDTH = 540;
+        const IMAGE_MARGIN = 9;
+        const IMAGE_WIDTH = 58;
+        init();
+        function init() {
+          var zoom = Utils.ce("div", {
+            position: "absolute",
+            left: "100px",
+            top: "100px",
+          });
+
+          createMin(zoom);
+          createMax(zoom);
+          createCarousel(zoom);
+          console.log(zoom);
+          createTitle(zoom, infom.title);
+          createInfo(zoom, infom.info);
+          createprice(zoom, infom.price);
+          createChange(zoom);
+          createCar(zoom,infom.id);
+          document.body.appendChild(zoom);
+        }
+        // 标题
+        function createTitle(parent, title) {
+          var h4 = Utils.ce("h4", {
+            position: "absolute",
+            width: "400px",
+            right: "-1020px",
+            top: "-100px",
+            color: "#212121",
+          });
+          h4.textContent = title;
+          parent.appendChild(h4);
+        }
+        // 橘黄突出部分字
+        function createInfo(parent, info) {
+          var font = Utils.ce("font", {
+            position: "absolute",
+            width: "500px",
+            right: "-1120px",
+            top: "0",
+            color: "rgb(255, 74, 0)",
+          });
+          font.textContent = info;
+          var span = Utils.ce("span", {
+            position: "absolute",
+            width: "500px",
+            right: "-1115px",
+            top: "25px",
+            color: "black",
+          });
+          span.textContent =
+            "「6GB+128GB闪降300元，订金预售火爆进行中，6月1日支付尾款，尾款享6期分期免息，购机抽奖赢70英寸电视」";
+          parent.appendChild(font);
+          parent.appendChild(span);
+        }
+        // 创建购物车
+        function createCar(parent, car) {
+          var a = Utils.ce("button", {
+            width: "180px",
+            height: "52px",
+            target:"balnk",
+            position:"absolute",
+            right:"-1100px",
+            top:"370px",
+          });
+          a.className = "car";
+          a.textContent ="加入购物车";
+          parent.appendChild(a);
+          localStorage.shappingList=JSON.stringify([]);
+             
+             a.addEventListener("click",clickHandler);
+  
+              function clickHandler(e){
+                
+                  var obj=goodsList[id-1];
+                 // console.log(obj)
+                    arr;
+                  if(localStorage.shoppingList){  
+                      var  arr=JSON.parse(localStorage.shoppingList);
+                   }else{
+                      arr=[]
+                   }  
+                  //var arr=JSON.parse(localStorage.shoppingList);
+                 arr.push(obj);
+                 console.log(arr)
+                 localStorage.shoppingList=JSON.stringify(arr);
+                 // location.href="./car.html"
+              }
+        }
+        // 价格
+        function createprice(parent, price) {
+          var p = Utils.ce("p", {
+            position: "absolute",
+            width: "400px",
+            right: "-1020px",
+            top: "80px",
+            color: "rgb(255, 74, 0)",
+          });
+          p.textContent = price + "起";
+          parent.appendChild(p);
+        }
+        //  创建手机版本
+        function createChange(parent) {
+          var div = Utils.ce("div");
+          var h3 = Utils.ce("h3");
+          h3.className = "right-h3";
+          h3.textContent = "选择版本";
+          var ul = Utils.ce("ul", {
+            position: "absolute",
+            width: "600px",
+            height: "150px",
+            margin: "0",
+            padding: "0",
+            right: "-1150px",
+            top: "200px",
+          });
+          for (var i = 0; i < 4; i++) {
+            var li = Utils.ce("li", {
+              width: " 280px",
+              height: "50px",
+              lineHeight: "52px",
+              border: "1px solid #e0e0e0",
+              listStyle: "none",
+              float: "left",
+              fontSize: "16px",
+              margin: "8px",
+              textAlign: " center",
+              color: "#333",
+            });
+            if (i === 0) li.textContent = "4GB+64GB";
+            if (i === 1) li.textContent = "6GB+128GB";
+            if (i === 2) li.textContent = "8GB+128GB";
+            if (i === 3) li.textContent = "8GB+256GB";
+            ullist.push(li);
+            ul.appendChild(li);
+          }
+
+          ul.addEventListener("click", ulClickHandler);
+          div.appendChild(h3);
+          div.appendChild(ul);
+          parent.appendChild(div);
+        }
+        function ulClickHandler(e) {
+          if (e.target.nodeName !== "LI") return;
+          if (preli) {
+            preli.style.border = "1px solid rgba(224,224,224)";
+            preli.style.color = "#333";
+          }
+          preli = e.target;
+          preli.style.border = "1px solid rgba(255,103,0)";
+          preli.style.color = "rgba(255,103,0)";
+          pos = ullist.indexOf(e.target);
+          //  console.log(e)
+          //  createprice(zoom,infom.price)
+        }
+        //
+        function createMin(parent) {
+          min = Utils.ce("div", {
+            position: "absolute",
+            width: MIN_WIDTH + "px",
+            height: MIN_WIDTH + "px",
+            backgroundImage: "url(" + baclist[0] + ")",
+            backgroundSize: "100% 100%",
+            border: "1px solid #CCCCCC",
+          });
+          mask = Utils.ce("div", {
+            position: "absolute",
+            width: MASK_WIDTH + "px",
+            height: MASK_WIDTH + "px",
+            display: "none",
+            backgroundColor: "rgba(180,160,0,0.3)",
+          });
+          min.appendChild(mask);
+          parent.appendChild(min);
+          min.addEventListener("mouseenter", mouseHandler);
+        }
+
+        function createMax(parent) {
+          max = Utils.ce("div", {
+            position: "absolute",
+            width: MAX_WIDTH + "px",
+            height: MAX_WIDTH + "px",
+            background: "url(" + baclist[0] + ") ",
+            // backgroundSize:"800px 800px",
+            border: "1px solid #CCCCCC",
+            display: "none",
+            left: MIN_WIDTH + 1 + "px",
+          });
+          max.className = "fang";
+          parent.appendChild(max);
+        }
+        //    创建轮播图
+        function createCarousel(parent) {
+          var div = Utils.ce("div", {
+            position: "absolute",
+            width: MIN_WIDTH + 2 + "px",
+            height: "58px",
+            top: MIN_WIDTH + 2 + "px",
+            margin: "20px 0",
+          });
+          var left = Utils.ce("div", {
+            width: "22px",
+            height: "32px",
+            top: "13px",
+            backgroundImage: "url(./img/sprite.png)",
+            backgroundPositionX: "0px",
+            backgroundPositionY: "-54px",
+            position: "absolute",
+          });
+          // 复制标签 会将标签的所有标签属性完全复制
+          var right = left.cloneNode(false);
+          left.style.left = "0px"; //先复制以后再加
+          Object.assign(right.style, {
+            right: "0px",
+            backgroundPositionX: "-78px",
+            backgroundPositionY: "0px",
+          });
+          bnList.push(left);
+          bnList.push(right);
+          div.appendChild(left);
+          div.appendChild(right);
+
+          var con = Utils.ce("div", {
+            position: "absolute",
+            width: "380px",
+            height: "58px",
+            left: "36px",
+            overflow: "hidden",
+          });
+          div.appendChild(con);
+          createImageCon(con);
+          parent.appendChild(div);
+          div.addEventListener("click", clickHandler);
+        }
+
+        function createImageCon(parent) {
+          var width =
+            iconList.length * IMAGE_WIDTH +
+            iconList.length * IMAGE_MARGIN * 2 -
+            IMAGE_MARGIN;
+          imgCon = Utils.ce("div", {
+            position: "absolute",
+            width: width + "px",
+            height: "58px",
+            left: 0,
+            transition: "all 0.5s",
+          });
+          for (var i = 0; i < iconList.length; i++) {
+            var img = Utils.ce("img", {
+              width: IMAGE_WIDTH - 4 + "px",
+              height: IMAGE_WIDTH - 4 + "px",
+              border: `2px solid rgba(255,0,0,${i == 0 ? 1 : 0})`,
+              marginLeft: `${i === 0 ? "0px" : IMAGE_MARGIN + "px"}`,
+              marginRight: IMAGE_MARGIN + "px",
+            });
+            img.src = iconList[i];
+            if (i === 0) preImg = img;
+            imgCon.appendChild(img);
+          }
+          imgCon.addEventListener("mouseover", iconMouseHandler);
+          parent.appendChild(imgCon);
+        }
+
+        function iconMouseHandler(e) {
+          if (e.target.nodeName !== "IMG") return;
+          if (preImg) {
+            preImg.style.border = "2px solid rgba(255,0,0,0)";
+          }
+          preImg = e.target;
+          preImg.style.border = "2px solid rgba(255,0,0,1)";
+          //    console.log( e.target.src.replace("_icon",""));
+          min.style.backgroundImage = max.style.backgroundImage = `url(${e.target.src.replace(
+            /_icon/,
+            ""
+          )})`;
+        }
+
+        function mouseHandler(e) {
+          if (e.type === "mouseenter") {
+            mask.style.display = max.style.display = "block";
+            min.addEventListener("mouseleave", mouseHandler);
+            min.addEventListener("mousemove", mouseHandler);
+          } else if (e.type === "mousemove") {
+            // 获取min块的相对视口位置，矩形
+            move(e.clientX, e.clientY);
+          } else if (e.type === "mouseleave") {
+            mask.style.display = max.style.display = "none";
+            min.removeEventListener("mouseleave", mouseHandler);
+            min.removeEventListener("mousemove", mouseHandler);
+          }
+        }
+
+        function move(mouseX, mouseY) {
+          var rect = min.getBoundingClientRect();
+          x = mouseX - MASK_WIDTH / 2 - rect.x;
+          y = mouseY - MASK_WIDTH / 2 - rect.y;
+          if (x < 0) x = 0;
+          if (y < 0) y = 0;
+          if (x > MIN_WIDTH - MASK_WIDTH) x = MIN_WIDTH - MASK_WIDTH;
+          if (y > MIN_WIDTH - MASK_WIDTH) y = MIN_WIDTH - MASK_WIDTH;
+          mask.style.left = x + "px";
+          mask.style.top = y + "px";
+          max.style.backgroundPositionX = -x * (MAX_WIDTH / MASK_WIDTH) + "px";
+          max.style.backgroundPositionY = -y * (MAX_WIDTH / MASK_WIDTH) + "px";
+        }
+
+        function clickHandler(e) {
+          var index = bnList.indexOf(e.target);
+          if (index < 0) return;
+          if (index === 0) {
+            pos--;
+            if (pos < 0) pos = 0;
+            //    imgCon.style.left="0px";
+          } else {
+            // imgCon.style.left="-380px";
+            pos++;
+            if (pos > Math.floor(iconList.length / 5)) {
+              pos = Math.floor(iconList.length / 5);
+            }
+          }
+
+          if (pos === Math.floor(iconList.length / 5)) {
+            imgCon.style.left = -(imgCon.offsetWidth - 380) + "px";
+          } else {
+            imgCon.style.left = pos * -380 + "px";
+          }
+        }
+      });
+    </script>
+    <div id="page2" style="margin-top: 650px;">
+      <iframe
+        align="center"
+        width="100%"
+        height="600"
+        src="./bottom.html"
+        frameborder="no"
+        border="0"
+        marginwidth="0"
+        marginheight="0"
+        scrolling="no"
+      ></iframe>
+    </div>
+  </body>
+</html>

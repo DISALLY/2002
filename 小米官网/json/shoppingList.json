@@ -1,0 +1,105 @@
+[{
+        "id":1,
+        "icon": "./img/001.webp",
+        "title": "Redmi K30",
+        "info": "骁龙865/50倍变焦",
+
+        "history": "1年历史最低价",
+        "oldPrice": "1699",
+        "price": "1599",
+        "sold": 0.8,
+        "num":1,
+        "href": "./info.html?id=1"
+    },
+    {
+        "id":2,
+        "icon": "./img/002.webp",
+        "title": "Redmi K30 Pro 变焦版",
+        "info": "双模5G，骁龙865，弹出全面屏",
+
+        "history": "",
+        "oldPrice": "3999",
+        "price": "3799",
+        "sold": 0.97,
+        "num":1,
+        "href": "./info.html?id=2"
+    },
+    {
+        "id":3,
+        "icon": "./img/003.webp",
+        "title": "小米10",
+        "info": "骁龙865/1亿像素相机",
+
+        "history": "21天历史最低价",
+        "oldPrice": "4199",
+        "price": "3999",
+        "sold": 0.34,
+        "num":1,
+        "href": "./info.html?id=3"
+    },
+    {
+        "id":4,
+        "icon": "./img/004.webp",
+        "title": "小米10 青春版5G",
+        "info": "50倍潜望式变焦/轻薄5G手机",
+
+        "history": "10天历史最低价",
+        "oldPrice": "2199",
+        "price": "2099",
+        "sold": 0.99,
+        "num":1,
+        "href": "./info.html?id=4"
+    },
+    {
+        "id":5,
+        "icon": "./img/005.webp",
+        "title": "Redmli K30",
+        "info": "120HZ流速屏，全速热爱",
+
+        "history": "30天历史最低价",
+        "oldPrice": "1699",
+        "price": "1599",
+        "sold": 0.25,
+        "num":1,
+        "href": "./info.html?id=5"
+    },
+    {
+        "id":6,
+        "icon": "./img/006.webp",
+        "title": "Redmi K3O Pro 变焦版",
+        "info": "双模5G，骁龙865，弹出全面屏",
+
+        "history": "",
+        "oldPrice": "3099",
+        "price": "2999",
+        "sold": 0.76,
+        "num":1,
+        "href": "./info.html?id=6"
+    },
+    {
+        "id": 7,
+        "icon": "./img/007.webp",
+        "title": "小米10 Pro",
+        "info": "骁龙865/50倍变焦",
+
+        "history": "",
+        "oldPrice": "5099",
+        "price": "4999",
+        "sold": 0.26,
+        "num":1,
+        "href": "./info.html?id=7"
+    },
+    {
+        "id": 8,
+        "icon": "./img/008.webp",
+        "title": "Redmi 8",
+        "info": "5000mAh超长续航",
+
+        "history": "",
+        "oldPrice": "829",
+        "price": "749",
+        "sold": 0.77,
+        "num":1,
+        "href": "./info.html?id=8"
+    }
+]

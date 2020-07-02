@@ -1,0 +1,407 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.w {
+    width: 1226px;
+    margin: auto;
+}
+
+.header {
+    width: 100%;
+    height: 40px;
+    background-color: #333;
+}
+
+.header .container {
+    height: 40px;
+}
+
+.header ul {
+    float: left;
+}
+
+.header li {
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    font-size: 12px;
+}
+
+.header li a {
+    color: #b0b0b0;
+}
+
+.header li a:hover {
+    color: #ffffff;
+}
+
+.header li span {
+    margin: 0px 6px;
+    color: #424242;
+}
+
+.header .right {
+    margin-left: 250px;
+}
+
+.top {
+    height: 100px;
+    width: 100%;
+}
+
+.top .nav {
+    height: 100px;
+    overflow: hidden;
+}
+
+.top .nav .log {
+    width: 55px;
+    height: 55px;
+    margin-top: 22px;
+
+}
+
+.top .nav .log a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #ff6700 url(../img/logo.png) no-repeat -44px 5px;
+    transition: 0.1s;
+}
+
+.top .nav .log a:hover {
+    background-position-x: 4px;
+}
+
+.top .nav div {
+    float: left;
+}
+
+.top .nav .list {
+    margin-left: 170px;
+}
+
+.top .nav li {
+    float: left;
+    margin-top: 10px;
+}
+
+.top .nav li a {
+    display: block;
+    color: #333;
+    font-size: 16px;
+    padding: 26px 10px 38px;
+}
+
+.top .nav li a:hover {
+    color: #ff6700;
+}
+
+.top .nav .search {
+    margin-top: 25px;
+    float: right;
+
+}
+
+.top .nav .search .inbox {
+    border: 1px solid #e0e0e0;
+    outline: 0;
+    float: left;
+    right: 51px;
+    width: 223px;
+    height: 48px;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 48px;
+}
+
+.top .nav .search .insub {
+    width: 52px;
+    height: 50px;
+    font-size: 24px;
+    line-height: 24px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-left: none;
+    background: url(../img/搜索.png) center no-repeat;
+    background-size: 40% 40%;
+}
+.top .nav .search .insub:hover{
+    background:#ff6700 url(../img/搜索\ \(1\).png) center no-repeat;
+    background-size: 40% 40%;
+}
+.banner {
+    height: 460px;
+    position: relative;
+}
+
+.banner .imgCon>img {
+    width: 1226px;
+    height: 460px;
+    position: absolute;
+    transition: all 1s;
+}
+
+.banner .leftBn,
+.rightBn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.banner .leftBn {
+    left: 234px;
+}
+
+.banner .rightBn {
+    right: 0px;
+}
+
+.banner .clear {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right:30px;
+    bottom:30px;
+
+}
+.banner .clear li {
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    border: 2px solid slategray;
+    float: left;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .4);
+}
+
+.banner .ban-left {
+    height: 460px;
+    width: 234px;
+    background-color: rgba(105, 101, 101, .4);
+    position: absolute;
+}
+
+.banner .ban-left ul {
+    padding: 20px 0px;
+}
+
+.banner .ban-left ul li {
+    width: 234px;
+    height: 42px;
+    line-height: 42px;
+}
+
+.banner .ban-left ul li:hover {
+    background-color: #ff6700;
+}
+
+.banner .ban-left ul a {
+    display: block;
+    color: white;
+    font-size: 15px;
+    padding-left: 30px;
+}
+
+.banner .ban-left ul span {
+    float: right;
+    margin-right: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ban-bottom {
+    height: 170px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.ban-bottom img {
+    width: 316px;
+    height: 170px;
+    display: inline-block;
+    margin-left: 12px;
+    border:0;
+    vertical-align: middle;
+}
+
+.ban-bottom .ban-bottom-left {
+    width: 232px;
+    height: 170px;
+    float: left;
+}
+
+.ban-bottom-left ul {
+    width: 226px;
+    height: 164px;
+    padding: 3px;
+    font-size: 12px;
+    text-align: center;
+    background: #5f5750;
+
+}
+.ban-bottom-left li a{
+ width: 70px;
+ height: 64px;
+ float: left;
+ display: block;
+ padding-top: 18px;
+ text-overflow: ellipsis;
+ color: #fff;
+ opacity: .7;
+ -webkit-transition: opacity .2s;
+ transition: opacity .2s;
+ line-height: 64px;
+}
+.ban-bottom-left li a:hover{
+    color:white;
+    opacity: 1;
+    display: block;
+}
+.main{
+    
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 12px;
+    margin-top: 20px;
+    
+}
+.row{
+    width: 1226px;
+    margin: auto;
+    position: relative;
+    
+}
+.row h2{
+    margin: 0;
+    font-size: 22px;
+    font-weight: 200;
+    line-height: 58px;
+    color: #333;
+}
+.row-left{
+    border-top-color: #e53935;
+    height: 300px;
+    padding-top:39px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    background: #f1eded;
+    text-align: center;
+    width: 234px;
+    float: left; 
+    
+}
+.row-left img{
+    width: 60px;
+    height: 100px;
+    border: 0;
+}
+.row-left span{
+    width: 100%;
+    display: block;
+    font-size: 15px;
+    margin-bottom:40px;
+    color: #6F6D6D;
+}
+/* 倒计时 */
+#times{
+   background:#605751 ;
+   font-size: 40px;
+   color: white;
+   
+}
+
+.mainCenter1-right{
+    width:978px;
+    height:340px;
+    float:left;
+    margin-left: 14px;
+    position: relative;
+    overflow: hidden;
+}
+.mainCenter1Banner{
+    width:2490px;
+    position:absolute;
+    left:0;
+    transition:1s;
+}
+.mainCenter1Banner li{
+    width:234px;
+    height:340px;
+    margin-right:14px;
+    text-align: center;
+    background: #fff;
+    float:left;
+    border-top:1px solid #ffac13;
+}
+.mainCenter1Banner li a{
+    display:block;
+    height: 300px;
+    padding-top: 39px;
+}
+.mainCenter1Banner li img{
+    width:160px;
+    height:160px;
+    margin-left:42px;
+}
+.mainCenter1Banner li h3{
+    height: 28px;
+    line-height: 28px;
+    margin: 20px 20px 3px;
+    font-size: 14px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    color: #212121;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.mainCenter1Banner li p{
+    height: 18px;
+    margin: 0 20px 12px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    color: #b0b0b0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.mainCenter1Banner li p span{
+    color:#ff6709;
+}
+.mainBannerBn{
+    position: absolute;
+    right: 0;
+    top: 24px;
+}
+.mainBannerBn span{
+    display: inline-block;
+    width: 24px;
+    height: 16px;
+    padding: 3px 5px;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+    line-height: 16px;
+    color: #b0b0b0;
+    text-align: center;
+    cursor: pointer;
+}
+.advert{
+    width:1226px;
+    height: 120px;
+    margin: 0 auto;
+    
+}
